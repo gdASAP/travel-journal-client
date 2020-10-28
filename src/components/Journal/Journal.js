@@ -1,58 +1,60 @@
 import React, { Component } from 'react'
-// import { showOrder } from './../../api/order'
-// import Button from 'react-bootstrap/Button'
-// import axios from 'axios'
-// import apiUrl from './../../apiConfig'
-import { showHistory } from './../../api/journal'
-// import messages from '../AutoDismissAlert/messages'
+import { Link, Redirect } from 'react-router-dom'
+import axios from 'axios'
 
-class JournalHistory extends Component {
+import apiUrl from '../../apiConfig'
+// import Layout from '../shared/Layout'
+
+class Journal extends Component {
   constructor (props) {
     super(props)
+
     this.state = {
-      title: '',
-      location: '',
-      food: '',
-      lodging: '',
-      activities: '',
-      learnings: '',
-      loves: '',
-      journal: []
+      journal: null,
+      deleted: false
     }
   }
 
   componentDidMount () {
-    const user = this.props.user
-    showHistory(user)
-      .then(response => {
-        console.log(response)
-        this.setState({
-          journal: response.data.entries
-        })
-      })
+    console.log('journal props', this.props)
+    axios(`${apiUrl}/journal/${this.props.match.params.id}`)
+      .then(res => this.setState({ journal: res.data.entry }))
+      .catch(console.error)
+  }
+
+  destroy = () => {
+    axios({
+      url: `${apiUrl}/journal/${this.props.match.params.id}`,
+      method: 'DELETE'
+    })
+      .then(() => this.setState({ deleted: true }))
       .catch(console.error)
   }
 
   render () {
-    const { journal } = this.state
-    const jsx =
-    <ol>
-      {journal.map(({ title, location, food, lodging, activities, learnings, loves }) => (
-        <div key={title}>
-          <h5>Title: {title}</h5>
-          <h5>Location: {location}</h5>
-        </div>
-      ))}
-    </ol>
-    // <Button variant="primary">Edit</Button>
+    const { journal, deleted } = this.state
+
+    if (!journal) {
+      return <p>Loading...</p>
+    }
+
+    if (deleted) {
+      return <Redirect to={
+        { pathname: '/', state: { msg: 'Journal succesfully deleted!' } }
+      } />
+    }
 
     return (
       <div>
-        <h1> Journal History </h1>
-        {jsx}
+        <h4>{journal.title}</h4>
+        <button onClick={this.destroy}>Delete</button>
+        <Link to={`/journal/${this.props.match.params.id}/edit`}>
+          <button>Edit</button>
+        </Link>
+        <Link to="/journal-history">Back to all entries</Link>
       </div>
     )
   }
 }
 
-export default JournalHistory
+export default Journal

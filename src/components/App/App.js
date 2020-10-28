@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, withRouter } from 'react-router-dom'
 
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
@@ -8,7 +8,11 @@ import SignUp from '../SignUp/SignUp'
 import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
-import JournalHistory from '../Journal/Journal'
+import JournalHistory from '../Journal/JournalHistory'
+import Journal from '../Journal/Journal'
+import JournalCreate from '../Journal/JournalCreate'
+// import JournalHistory from '../Journal/Journal'
+// import Journal from '../Journal/Journal'
 
 class App extends Component {
   constructor () {
@@ -67,10 +71,21 @@ class App extends Component {
               user={user}
               msgAlert={this.msgAlert} />
           )} />
+
+          <Route exact path='/create-journal' render={() => (
+            <JournalCreate
+              user={user}
+              msgAlert={this.msgAlert} />
+          )} />
+
+          <Route exact path='/journal/:id' render={(props) => (
+            <Journal
+              user={user}/>
+          )} />
         </main>
       </Fragment>
     )
   }
 }
 
-export default App
+export default withRouter(App)
