@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 // import Button from 'react-bootstrap/Button'
 import axios from 'axios'
 import apiUrl from './../../apiConfig'
+import messages from '../AutoDismissAlert/messages'
 // import { showHistory } from './../../api/journalAPI'
 // import messages from '../AutoDismissAlert/messages'
 // import JournalForm from './JournalForm'
@@ -52,6 +53,7 @@ class JournalCreate extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
+    const { msgAlert } = this.props
     // console.log('token', this.props.user.token)
     // console.log('journal', this.state.journal)
     // console.log('owner', this.props.user)
@@ -65,6 +67,14 @@ class JournalCreate extends Component {
       owner: this.props.user
     })
       .then(res => this.setState({ createdJournalId: res.data.entry._id }))
+      .then(() => {
+        this.setState({ title: '', location: '', food: '' })
+      })
+      .then(() => msgAlert({
+        heading: 'Journal Entry Created',
+        message: messages.journalCreated,
+        variant: 'success'
+      }))
       .catch(console.error)
   }
   render () {
@@ -72,7 +82,7 @@ class JournalCreate extends Component {
     const { createdJournalId, journal } = this.state
 
     if (createdJournalId) {
-      console.log('journal created')
+      // console.log('journal created')
     }
     // const jsx =
     //   <div key={title}>

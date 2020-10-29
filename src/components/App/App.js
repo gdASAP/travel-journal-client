@@ -82,6 +82,7 @@ class App extends Component {
           <Route exact path='/journal/:id' render={(props) => (
             <Journal
               user={user}
+              msgAlert={this.msgAlert}
               journalID={this.props.location.journalProps}/>
           )} />
         </main>
