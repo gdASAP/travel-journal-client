@@ -20,7 +20,8 @@ class App extends Component {
 
     this.state = {
       user: null,
-      msgAlerts: []
+      msgAlerts: [],
+      id: ''
     }
   }
 
@@ -80,7 +81,8 @@ class App extends Component {
 
           <Route exact path='/journal/:id' render={(props) => (
             <Journal
-              user={user}/>
+              user={user}
+              journalID={this.props.location.journalProps}/>
           )} />
         </main>
       </Fragment>

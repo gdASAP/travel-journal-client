@@ -21,7 +21,7 @@ class JournalHistory extends Component {
     // console.log('props', this.props)
     showHistory(user)
       .then(response => {
-        console.log(response)
+        // console.log(response)
         this.setState({
           journals: response.data.entries
         })
@@ -50,7 +50,12 @@ class JournalHistory extends Component {
   render () {
     const journals = this.state.journals.map(entry => (
       <li key={entry._id}>
-        <Link to={`/journal/${entry._id}`}>{entry.title}</Link>
+        <Link to={{
+          pathname: `/journal/${entry._id}`,
+          journalProps: {
+            journalID: `${entry._id}`
+          }
+        }} >{entry.title}</Link>
       </li>
     ))
     // { _id, title, location, food, lodging, activities, learnings, loves }) => (

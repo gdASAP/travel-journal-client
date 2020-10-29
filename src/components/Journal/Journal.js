@@ -16,16 +16,26 @@ class Journal extends Component {
   }
 
   componentDidMount () {
-    console.log('journal props', this.props)
-    axios(`${apiUrl}/journal/${this.props.match.params.id}`)
+    // console.log('journal props', this.props)
+    // const { journalID } = this.props.journalID
+    axios({
+      url: `${apiUrl}/journal/${this.props.journalID.journalID}`,
+      method: 'GET',
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
+    })
       .then(res => this.setState({ journal: res.data.entry }))
       .catch(console.error)
   }
 
   destroy = () => {
     axios({
-      url: `${apiUrl}/journal/${this.props.match.params.id}`,
-      method: 'DELETE'
+      url: `${apiUrl}/journal/${this.props.journalID.journalID}`,
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Token token=${this.props.user.token}`
+      }
     })
       .then(() => this.setState({ deleted: true }))
       .catch(console.error)
@@ -48,7 +58,7 @@ class Journal extends Component {
       <div>
         <h4>{journal.title}</h4>
         <button onClick={this.destroy}>Delete</button>
-        <Link to={`/journal/${this.props.match.params.id}/edit`}>
+        <Link to={`/journal/${this.props.journalID.journalID}/edit`}>
           <button>Edit</button>
         </Link>
         <Link to="/journal-history">Back to all entries</Link>
