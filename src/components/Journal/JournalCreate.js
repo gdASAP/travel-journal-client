@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import apiUrl from './../../apiConfig'
 import messages from '../AutoDismissAlert/messages'
+import Button from 'react-bootstrap/Button'
 // import { showHistory } from './../../api/journalAPI'
 // import messages from '../AutoDismissAlert/messages'
 // import JournalForm from './JournalForm'
@@ -13,6 +14,7 @@ class JournalCreate extends Component {
     super(props)
     this.state = {
       journal: {
+        image: '',
         title: '',
         location: '',
         food: '',
@@ -21,7 +23,19 @@ class JournalCreate extends Component {
         learnings: '',
         loves: ''
       },
-      createdJournalId: null
+      createdJournalId: null,
+      clearForm: false,
+      clear: {
+        image: '',
+        title: '',
+        location: '',
+        food: '',
+        lodging: '',
+        activities: '',
+        learnings: '',
+        loves: ''
+      },
+      journalTemplate: {}
     }
   }
 
@@ -36,24 +50,36 @@ class JournalCreate extends Component {
   //     })
   //     .catch(console.error)
   // }
-
-  handleChange = (event) => {
-    event.persist()
-    //  const { title } = this.state
-    // const title = target.title
-    // const location = target.location
-    this.setState(prevState => {
-      const updatedField = { [event.target.name]: event.target.value }
-      const newJournal = Object.assign({}, prevState.journal, updatedField)
-      // console.log(newJournal)
-      return { journal: newJournal }
-    })
+    handleClearForm = () => {
+      const { clear } = this.state
+      // console.log(journal.title)
+      //  const { title } = this.state
+      // const title = target.title
+      // const location = target.location
+      this.setState({
+        journalTemplate: clear,
+        clearForm: false
+      })
     // console.log('journal', this.state.journal)
-  }
+    }
+    handleChange = (event) => {
+      event.persist()
+      //  const { title } = this.state
+      // const title = target.title
+      // const location = target.location
+      this.setState(prevState => {
+        const updatedField = { [event.target.name]: event.target.value }
+        const newJournal = Object.assign({}, prevState.journal, updatedField)
+        // console.log(newJournal)
+        return { journal: newJournal }
+      })
+      console.log('journal', this.state.journal)
+    }
 
   handleSubmit = event => {
     event.preventDefault()
     const { msgAlert } = this.props
+    const { handleClearForm } = this
     // console.log('token', this.props.user.token)
     // console.log('journal', this.state.journal)
     // console.log('owner', this.props.user)
@@ -66,32 +92,30 @@ class JournalCreate extends Component {
       data: { entry: this.state.journal },
       owner: this.props.user
     })
-      .then(res => this.setState({ createdJournalId: res.data.entry._id }))
-      .then(() => {
-        this.setState({ title: '', location: '', food: '' })
-      })
+      .then(res => this.setState({
+        createdJournalId: res.data.entry._id,
+        clearForm: true }))
       .then(() => msgAlert({
         heading: 'Journal Entry Created',
         message: messages.journalCreated,
         variant: 'success'
       }))
+      .then(handleClearForm)
       .catch(console.error)
   }
   render () {
     const { handleChange, handleSubmit } = this
-    const { createdJournalId, journal } = this.state
+    const { journalTemplate } = this.state
+    // const { handleChange, handleSubmit, handleClearForm } = this
+    // const { createdJournalId, journalTemplate, clearForm } = this.state
 
-    if (createdJournalId) {
-      // console.log('journal created')
-    }
-    // const jsx =
-    //   <div key={title}>
-    //       <h5>Title: {title}</h5>
-    //       <h5>Location: {location}</h5>
-    //     </div>
-    //   ))}
+    // if (clearForm && createdJournalId) {
+    //   handleClearForm()
+    // }
 
-    // <Button variant="primary">Edit</Button>
+    // if (createdJournalId) {
+    //   // console.log('journal created')
+    // }
 
     return (
       <form onSubmit={handleSubmit}>
@@ -99,7 +123,7 @@ class JournalCreate extends Component {
         <input
           placeholder="Wine Country"
           type='text'
-          value={journal.title}
+          value={journalTemplate.title}
           name='title'
           onChange={handleChange}
         />
@@ -108,8 +132,17 @@ class JournalCreate extends Component {
         <input
           placeholder="Napa Valley, CA"
           type='text'
-          value={journal.location}
+          value={journalTemplate.location}
           name='location'
+          onChange={handleChange}
+        />
+
+        <label>Favorite Photo</label>
+        <input
+          placeholder="https://i.imgur.com/yourimage.jpg"
+          type='text'
+          value={journalTemplate.image}
+          name='image'
           onChange={handleChange}
         />
 
@@ -117,7 +150,7 @@ class JournalCreate extends Component {
         <input
           placeholder="Expensive Cheese"
           type='textarea'
-          value={journal.food}
+          value={journalTemplate.food}
           name='food'
           onChange={handleChange}
         />
@@ -126,7 +159,7 @@ class JournalCreate extends Component {
         <input
           placeholder="Four Seasons Resort"
           type='text'
-          value={journal.lodging}
+          value={journalTemplate.lodging}
           name='lodging'
           onChange={handleChange}
         />
@@ -135,7 +168,7 @@ class JournalCreate extends Component {
         <input
           placeholder="Wine Tastings"
           type='textarea'
-          value={journal.activities}
+          value={journalTemplate.activities}
           name='activities'
           onChange={handleChange}
         />
@@ -144,7 +177,7 @@ class JournalCreate extends Component {
         <input
           placeholder="How wine is made"
           type='textarea'
-          value={journal.learnings}
+          value={journalTemplate.learnings}
           name='learnings'
           onChange={handleChange}
         />
@@ -153,11 +186,11 @@ class JournalCreate extends Component {
         <input
           placeholder="Scenic views"
           type='textarea'
-          value={journal.loves}
+          value={journalTemplate.loves}
           name='loves'
           onChange={handleChange}
         />
-        <button type="submit">Submit</button>
+        <Button type="submit" variant="primary">Submit</Button>
       </form>
     )
   }

@@ -15,7 +15,8 @@ class Journal extends Component {
       journal: {},
       deleted: false,
       editMode: false,
-      isLoaded: false
+      isLoaded: false,
+      journalTitle: ''
     }
   }
 
@@ -29,12 +30,15 @@ class Journal extends Component {
         'Authorization': `Token token=${this.props.user.token}`
       }
     })
-    //  .then(res => console.log('res', res))
-      .then(res => this.setState({
-        journal: res.data.entry,
-        isLoaded: true }))
+      // .then(res => console.log('res', res))
+      .then(res => {
+        this.setState({
+          journal: res.data.entry,
+          journalTitle: res.data.entry.title,
+          isLoaded: true })
+      })
       .catch(console.error)
-  //  console.log(this.journal)
+    // console.log(this.state.journalTitle)
   }
   edit = () => {
   //  console.log(this.state.journal)
@@ -53,7 +57,7 @@ class Journal extends Component {
     })
       .then(() => this.setState({ deleted: true }))
       .then(() => msgAlert({
-        heading: 'Journal Entry Deleted', // would like to add in journal name
+        heading: `${this.state.journalTitle} Journal Entry Deleted`, // would like to add in journal name
         message: messages.journalDeleted,
         variant: 'success'
       }))
@@ -110,7 +114,7 @@ class Journal extends Component {
 
     if (deleted) {
       return <Redirect to={
-        { pathname: '/', state: { msg: 'Journal succesfully deleted!' } }
+        { pathname: '/journal-history', state: { msg: 'Journal succesfully deleted!' } }
       } />
     }
 
@@ -118,9 +122,10 @@ class Journal extends Component {
       jsx =
     <div>
       <h4>{journal.title}</h4>
+      <img src={journal.image}/>
       <Button className='journal-edit' onClick={this.destroy} variant="primary">Delete</Button>
       <Button className='journal-edit' onClick={this.edit} variant="primary">Edit</Button>
-      <Link to='/journal-history'>Back to all entries</Link>
+      <Link to='/journal-history'>Back to journal history</Link>
     </div>
     }
 

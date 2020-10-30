@@ -30,22 +30,22 @@ class JournalHistory extends Component {
 
   render () {
     const journals = this.state.journals.map(entry => (
-      <li key={entry._id}>
+      <div key={entry._id}>
         <Link to={{
           pathname: `/journal/${entry._id}`,
           journalProps: {
             journalID: `${entry._id}`
           }
         }} >{entry.title}</Link>
-      </li>
+        <img src={entry.image} />
+        <p>{entry.location}</p>
+      </div>
     ))
 
     return (
       <div>
         <h1> Journal History </h1>
-        <ul>
-          {journals}
-        </ul>
+        {journals}
       </div>
     )
   }
