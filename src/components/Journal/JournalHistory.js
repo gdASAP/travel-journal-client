@@ -29,23 +29,29 @@ class JournalHistory extends Component {
   }
 
   render () {
-    const journals = this.state.journals.map(entry => (
-      <li key={entry._id}>
+    const reverse = this.state.journals.reverse()
+    const journals = reverse.map(entry => (
+      <div key={entry._id}>
         <Link to={{
           pathname: `/journal/${entry._id}`,
           journalProps: {
             journalID: `${entry._id}`
           }
-        }} >{entry.title}</Link>
-      </li>
+        }} >{entry.title} in {entry.location}</Link>
+        <img src={entry.image} alt={entry.title} className='history-image'/>
+      </div>
     ))
 
     return (
       <div>
         <h1> Journal History </h1>
-        <ul>
-          {journals}
-        </ul>
+        <div className='container-cr'>
+          <div className='row'>
+            <div className='history-view'>
+              {journals}
+            </div>
+          </div>
+        </div>
       </div>
     )
   }
