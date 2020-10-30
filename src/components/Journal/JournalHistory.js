@@ -44,7 +44,7 @@ class JournalHistory extends Component {
 
     return (
       <div>
-        <h1> Journal History </h1>
+        <h1 className='page-header'> Journal History </h1>
         <div className='container-cr'>
           <div className='row'>
             <div className='history-view'>

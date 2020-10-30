@@ -116,12 +116,18 @@ class Journal extends Component {
 
     if (isLoaded) {
       jsx =
-    <div>
+    <div className='selected-entry'>
       <h4>{journal.title} in {journal.location}</h4>
-      <img src={journal.image} alt={journal.title} className='history-image'/>
-      <Button className='journal-edit' onClick={this.destroy} variant="primary">Delete</Button>
-      <Button className='journal-edit' onClick={this.edit} variant="primary">Edit</Button>
-      <Link to='/journal-history'>Back to all entries</Link>
+      <div>
+        <img src={journal.image} alt={journal.title} className='edit-image'/>
+      </div>
+      <div>
+        <Button className='journal-edit' onClick={this.destroy} variant="primary">Delete</Button>
+        <Button className='journal-edit' onClick={this.edit} variant="primary">Edit</Button>
+      </div>
+      <div>
+        <Link to='/journal-history'>Back to all entries</Link>
+      </div>
     </div>
     }
 
@@ -129,7 +135,7 @@ class Journal extends Component {
       jsx =
     <div className='container-ed'>
       <div className='row'>
-        <h2>Editing {journal.title}</h2>
+        <h2 className='page-header'>Editing {journal.title}</h2>
         <form onSubmit={handleSubmit} className='create-form'>
           <label>Title</label>
           <input
@@ -199,7 +205,7 @@ class Journal extends Component {
             name='loves'
             onChange={handleChange}
           />
-          <input type="submit" value="Submit" />
+          <Button type="submit" variant="primary">Submit</Button>
           <Button className='journal-edit' onClick={handleCancel} variant="primary">Cancel Edit</Button>
         </form>
       </div>
