@@ -37,7 +37,7 @@ class JournalHistory extends Component {
           journalProps: {
             journalID: `${entry._id}`
           }
-        }} >{entry.title} in {entry.location}</Link>
+        }} className='form-text'>{entry.title} <span className='alt-text'>{entry.location}</span></Link>
         <img src={entry.image} alt={entry.title} className='history-image'/>
       </div>
     ))

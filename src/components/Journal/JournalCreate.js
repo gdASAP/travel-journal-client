@@ -94,8 +94,8 @@ class JournalCreate extends Component {
       <div className='container-cr'>
         <div className='row'>
           <form onSubmit={handleSubmit} className='create-form'>
-            <h3>*Required Fields*</h3>
-            <label>*Title*</label>
+            <h1 className='page-header'>Relive Your Travel Experience</h1>
+            <label className='form-text'>Title (Required):</label>
             <input
               placeholder="Wine Country"
               type='text'
@@ -104,7 +104,7 @@ class JournalCreate extends Component {
               onChange={handleChange}
             />
 
-            <label>*Location*</label>
+            <label className='form-text'>Location (Required):</label>
             <input
               placeholder="Napa Valley, CA"
               type='text'
@@ -113,7 +113,7 @@ class JournalCreate extends Component {
               onChange={handleChange}
             />
 
-            <label>Favorite Photo</label>
+            <label className='form-text'>Favorite Photo:</label>
             <input
               placeholder="https://i.imgur.com/yourimage.jpg"
               type='text'
@@ -122,7 +122,7 @@ class JournalCreate extends Component {
               onChange={handleChange}
             />
 
-            <label>What I Ate</label>
+            <label className='form-text'>What I Ate:</label>
             <input
               placeholder="Expensive Cheese"
               type='textarea'
@@ -131,7 +131,7 @@ class JournalCreate extends Component {
               onChange={handleChange}
             />
 
-            <label>Where I Stayed</label>
+            <label className='form-text'>Where I Stayed:</label>
             <input
               placeholder="Four Seasons Resort"
               type='text'
@@ -140,7 +140,7 @@ class JournalCreate extends Component {
               onChange={handleChange}
             />
 
-            <label>What I Did</label>
+            <label className='form-text'>What I Did:</label>
             <input
               placeholder="Wine Tastings"
               type='textarea'
@@ -149,7 +149,7 @@ class JournalCreate extends Component {
               onChange={handleChange}
             />
 
-            <label>What I Learned</label>
+            <label className='form-text'>What I Learned:</label>
             <input
               placeholder="How wine is made"
               type='textarea'
@@ -158,7 +158,7 @@ class JournalCreate extends Component {
               onChange={handleChange}
             />
 
-            <label>What I Loved</label>
+            <label className='form-text'>What I Loved:</label>
             <input
               placeholder="Scenic views"
               type='textarea'

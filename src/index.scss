@@ -1,4 +1,20 @@
 @import '~bootstrap/scss/bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body {
+  background-color: #DCDCDC;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.form-text {
+  color: #007bff;
+  font-size: 28px;
+}
+
+.alt-text {
+  color: #696969;
+  font-size: 28px;
+}
 
 .container-cr {
   justify-content: center;
@@ -13,22 +29,26 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
-  width: 35%;
 }
 
 .history-view {
   display: flex;
   flex-wrap: wrap;
+  align-content: space-between;
+  padding: 25px 50px 25px 50px;
+  box-sizing: border-box;
 }
 
 .history-image {
   height: 300px;
   width: 300px;
+  padding: 25px;
 }
 
 .edit-image {
-  height: 400px;
-  width: 400px;
+  height: 500px;
+  width: 700px;
+  padding: 25px;
 }
 
 .page-header {

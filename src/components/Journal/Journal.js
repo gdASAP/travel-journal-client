@@ -117,7 +117,7 @@ class Journal extends Component {
     if (isLoaded) {
       jsx =
     <div className='selected-entry'>
-      <h4>{journal.title} in {journal.location}</h4>
+      <h4 className='form-text'>{journal.title} <span className='alt-text'> {journal.location}</span></h4>
       <div>
         <img src={journal.image} alt={journal.title} className='edit-image'/>
       </div>
@@ -137,7 +137,7 @@ class Journal extends Component {
       <div className='row'>
         <h2 className='page-header'>Editing {journal.title}</h2>
         <form onSubmit={handleSubmit} className='create-form'>
-          <label>Title</label>
+          <label className='form-text'>Title (Required):</label>
           <input
             placeholder={journal.title}
             type='text'
@@ -145,7 +145,7 @@ class Journal extends Component {
             name='title'
             onChange={handleChange}
           />
-          <label>Location</label>
+          <label className='form-text'>Location (Required):</label>
           <input
             placeholder={journal.location}
             type='text'
@@ -153,7 +153,7 @@ class Journal extends Component {
             name='location'
             onChange={handleChange}
           />
-          <label>Favorite Photo</label>
+          <label className='form-text'>Favorite Photo:</label>
           <input
             placeholder="https://i.imgur.com/yourimage.jpg"
             type='text'
@@ -161,7 +161,7 @@ class Journal extends Component {
             name='image'
             onChange={handleChange}
           />
-          <label>What I Ate</label>
+          <label className='form-text'>What I Ate:</label>
           <input
             placeholder={journal.food}
             type='textarea'
@@ -170,7 +170,7 @@ class Journal extends Component {
             onChange={handleChange}
           />
 
-          <label>Where I Stayed</label>
+          <label className='form-text'>Where I Stayed:</label>
           <input
             placeholder={journal.lodging}
             type='text'
@@ -179,7 +179,7 @@ class Journal extends Component {
             onChange={handleChange}
           />
 
-          <label>What I Did</label>
+          <label className='form-text'>What I Did:</label>
           <input
             placeholder={journal.activities}
             type='textarea'
@@ -188,7 +188,7 @@ class Journal extends Component {
             onChange={handleChange}
           />
 
-          <label>What I Learned</label>
+          <label className='form-text'>What I Learned:</label>
           <input
             placeholder={journal.learnings}
             type='textarea'
@@ -197,7 +197,7 @@ class Journal extends Component {
             onChange={handleChange}
           />
 
-          <label>What I Loved</label>
+          <label className='form-text'>What I Loved:</label>
           <input
             placeholder={journal.loves}
             type='textarea'

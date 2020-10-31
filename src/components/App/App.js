@@ -38,54 +38,56 @@ class App extends Component {
 
     return (
       <Fragment>
-        <Header user={user} />
-        {msgAlerts.map((msgAlert, index) => (
-          <AutoDismissAlert
-            key={index}
-            heading={msgAlert.heading}
-            variant={msgAlert.variant}
-            message={msgAlert.message}
-          />
-        ))}
-        <main className="container">
-          <Route path='/sign-up' render={() => (
-            <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} />
-          <Route path='/sign-in' render={() => (
-            <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
-          )} />
-          <AuthenticatedRoute user={user} path='/sign-out' render={() => (
-            <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
-          )} />
-          <AuthenticatedRoute user={user} path='/change-password' render={() => (
-            <ChangePassword msgAlert={this.msgAlert} user={user} />
-          )} />
+        <div className='app-background'>
+          <Header user={user} />
+          {msgAlerts.map((msgAlert, index) => (
+            <AutoDismissAlert
+              key={index}
+              heading={msgAlert.heading}
+              variant={msgAlert.variant}
+              message={msgAlert.message}
+            />
+          ))}
+          <main className="container">
+            <Route path='/sign-up' render={() => (
+              <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
+            )} />
+            <Route path='/sign-in' render={() => (
+              <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+            )} />
+            <AuthenticatedRoute user={user} path='/sign-out' render={() => (
+              <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />
+            )} />
+            <AuthenticatedRoute user={user} path='/change-password' render={() => (
+              <ChangePassword msgAlert={this.msgAlert} user={user} />
+            )} />
 
-          <Route user={user} exact path='/' render={() => (
-            <div>
-              <h2>Sample Journal will go here</h2>
-            </div>
-          )} />
+            <Route user={user} exact path='/' render={() => (
+              <div>
+                <img src={'https://media.git.generalassemb.ly/user/30427/files/6b0a1800-1af7-11eb-81a3-26eeed541011'} alt="Travel" />
+              </div>
+            )} />
 
-          <Route exact path='/journal-history' render={() => (
-            <JournalHistory
-              user={user}
-              msgAlert={this.msgAlert} />
-          )} />
+            <Route exact path='/journal-history' render={() => (
+              <JournalHistory
+                user={user}
+                msgAlert={this.msgAlert} />
+            )} />
 
-          <Route exact path='/create-journal' render={() => (
-            <JournalCreate
-              user={user}
-              msgAlert={this.msgAlert} />
-          )} />
+            <Route exact path='/create-journal' render={() => (
+              <JournalCreate
+                user={user}
+                msgAlert={this.msgAlert} />
+            )} />
 
-          <Route exact path='/journal/:id' render={(props) => (
-            <Journal
-              user={user}
-              msgAlert={this.msgAlert}
-              journalID={this.props.location.journalProps}/>
-          )} />
-        </main>
+            <Route exact path='/journal/:id' render={(props) => (
+              <Journal
+                user={user}
+                msgAlert={this.msgAlert}
+                journalID={this.props.location.journalProps}/>
+            )} />
+          </main>
+        </div>
       </Fragment>
     )
   }
