@@ -133,83 +133,88 @@ class Journal extends Component {
 
     if (editMode) {
       jsx =
-    <div className='container-ed'>
-      <div className='row'>
+      <div>
         <h2 className='page-header'>Editing {journal.title}</h2>
-        <form onSubmit={handleSubmit} className='create-form'>
-          <label className='form-text'>Title (Required):</label>
-          <input
-            placeholder={journal.title}
-            type='text'
-            value={journal.title}
-            name='title'
-            onChange={handleChange}
-          />
-          <label className='form-text'>Location (Required):</label>
-          <input
-            placeholder={journal.location}
-            type='text'
-            value={journal.location}
-            name='location'
-            onChange={handleChange}
-          />
-          <label className='form-text'>Favorite Photo:</label>
-          <input
-            placeholder="https://i.imgur.com/yourimage.jpg"
-            type='text'
-            value={journal.image}
-            name='image'
-            onChange={handleChange}
-          />
-          <label className='form-text'>What I Ate:</label>
-          <input
-            placeholder={journal.food}
-            type='textarea'
-            value={journal.food}
-            name='food'
-            onChange={handleChange}
-          />
+        <div className='container-ed'>
+          <div className='row'>
+            <h2 className='page-header'></h2>
+            <div>
+              <form onSubmit={handleSubmit} className='create-form'>
+                <label className='form-text'>Title (Required):</label>
+                <input
+                  placeholder={journal.title}
+                  type='text'
+                  value={journal.title}
+                  name='title'
+                  onChange={handleChange}
+                />
+                <label className='form-text'>Location (Required):</label>
+                <input
+                  placeholder={journal.location}
+                  type='text'
+                  value={journal.location}
+                  name='location'
+                  onChange={handleChange}
+                />
+                <label className='form-text'>Favorite Photo:</label>
+                <input
+                  placeholder="https://i.imgur.com/yourimage.jpg"
+                  type='text'
+                  value={journal.image}
+                  name='image'
+                  onChange={handleChange}
+                />
+                <label className='form-text'>What I Ate:</label>
+                <input
+                  placeholder={journal.food}
+                  type='textarea'
+                  value={journal.food}
+                  name='food'
+                  onChange={handleChange}
+                />
 
-          <label className='form-text'>Where I Stayed:</label>
-          <input
-            placeholder={journal.lodging}
-            type='text'
-            value={journal.lodging}
-            name='lodging'
-            onChange={handleChange}
-          />
+                <label className='form-text'>Where I Stayed:</label>
+                <input
+                  placeholder={journal.lodging}
+                  type='text'
+                  value={journal.lodging}
+                  name='lodging'
+                  onChange={handleChange}
+                />
 
-          <label className='form-text'>What I Did:</label>
-          <input
-            placeholder={journal.activities}
-            type='textarea'
-            value={journal.activities}
-            name='activities'
-            onChange={handleChange}
-          />
+                <label className='form-text'>What I Did:</label>
+                <input
+                  placeholder={journal.activities}
+                  type='textarea'
+                  value={journal.activities}
+                  name='activities'
+                  onChange={handleChange}
+                />
 
-          <label className='form-text'>What I Learned:</label>
-          <input
-            placeholder={journal.learnings}
-            type='textarea'
-            value={journal.learnings}
-            name='learnings'
-            onChange={handleChange}
-          />
+                <label className='form-text'>What I Learned:</label>
+                <input
+                  placeholder={journal.learnings}
+                  type='textarea'
+                  value={journal.learnings}
+                  name='learnings'
+                  onChange={handleChange}
+                />
 
-          <label className='form-text'>What I Loved:</label>
-          <input
-            placeholder={journal.loves}
-            type='textarea'
-            value={journal.loves}
-            name='loves'
-            onChange={handleChange}
-          />
-          <Button type="submit" variant="primary">Submit</Button>
-          <Button className='journal-edit' onClick={handleCancel} variant="primary">Cancel Edit</Button>
-        </form>
+                <label className='form-text'>What I Loved:</label>
+                <input
+                  placeholder={journal.loves}
+                  type='textarea'
+                  value={journal.loves}
+                  name='loves'
+                  onChange={handleChange}
+                />
+                <Button type="submit" variant="primary">Submit</Button>
+                <Button className='journal-edit' onClick={handleCancel} variant="primary">Cancel Edit</Button>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
     }
     return (
       <div>

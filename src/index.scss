@@ -2,8 +2,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 body {
-  background-color: #DCDCDC;
+  background-color: #fafafa;
   font-family: 'Montserrat', sans-serif;
+}
+
+.splash-page {
+  color: #007bff;
+  font-size: 85px;
+  justify-content: center;
+  text-align: center;
+  padding: 200px;
 }
 
 .form-text {

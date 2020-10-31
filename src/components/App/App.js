@@ -64,7 +64,7 @@ class App extends Component {
 
             <Route user={user} exact path='/' render={() => (
               <div>
-                <img src={'https://media.git.generalassemb.ly/user/30427/files/6b0a1800-1af7-11eb-81a3-26eeed541011'} alt="Travel" />
+                <h1 className='splash-page'> RELIVE </h1>
               </div>
             )} />
 
