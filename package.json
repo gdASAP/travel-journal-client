@@ -1,6 +1,6 @@
 {
   "name": "travel-journal-client",
-  "homepage": "https://github.com/gdASAP/travel-journal-client.git",
+  "homepage": "https://gdasap.github.io/travel-journal-client/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

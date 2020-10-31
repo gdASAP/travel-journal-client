@@ -42,7 +42,7 @@ Travel Journal, is web app where users can store online journal entries. The use
 ---
 ## LINKS
 ---
-*[API SITE](https://mighty-mesa-16767.herokuapp.com/)
-*[CLIENT SITE] (https://sei-dev-ish.github.io/lilys-client/)
+*[API SITE](https://macabre-mansion-80824.herokuapp.com/)
+*[CLIENT SITE] (https://gdasap.github.io/travel-journal-client/)
 *[API REPO] (https://github.com/gdASAP/travel-journal-api)
 *[CLIENT REPO] (https://github.com/gdASAP/travel-journal-client)
