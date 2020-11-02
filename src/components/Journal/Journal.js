@@ -122,6 +122,13 @@ class Journal extends Component {
         <img src={journal.image} alt={journal.title} className='edit-image'/>
       </div>
       <div>
+        <p>What I Ate: {journal.food}</p>
+        <p>Where I Stayed: {journal.lodging}</p>
+        <p>What I Did: {journal.activities}</p>
+        <p>What I Learned: {journal.learnings}</p>
+        <p>What I Loved: {journal.loves}</p>
+      </div>
+      <div>
         <Button className='journal-edit' onClick={this.destroy} variant="primary">Delete</Button>
         <Button className='journal-edit' onClick={this.edit} variant="primary">Edit</Button>
       </div>
