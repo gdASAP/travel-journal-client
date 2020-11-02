@@ -1,4 +1,5 @@
 # Travel Journal Client
+![Relive homepage](https://media.git.generalassemb.ly/user/30427/files/65e1d000-1c93-11eb-9498-0d8e60800dc8)
 ---
 ## Planning Story
 ---
@@ -46,3 +47,7 @@ Travel Journal, is web app where users can store online journal entries. The use
 *[CLIENT SITE] (https://gdasap.github.io/travel-journal-client/)
 *[API REPO] (https://github.com/gdASAP/travel-journal-api)
 *[CLIENT REPO] (https://github.com/gdASAP/travel-journal-client)
+---
+## SETUP AND INTSTALLATION
+---
+https://git.generalassemb.ly/ga-wdi-boston/react-auth-template/
